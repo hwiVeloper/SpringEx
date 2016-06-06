@@ -1,4 +1,4 @@
-package com.hwi.ex;
+package com.hwi.ex01;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;

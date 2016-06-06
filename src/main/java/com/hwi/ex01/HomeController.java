@@ -1,4 +1,4 @@
-package com.hwi.ex;
+package com.hwi.ex01;
 
 import java.text.DateFormat;
 import java.util.Date;

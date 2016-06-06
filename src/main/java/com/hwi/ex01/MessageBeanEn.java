@@ -1,4 +1,4 @@
-package com.hwi.ex;
+package com.hwi.ex01;
 
 public class MessageBeanEn implements MessageBean {
     public void sayHello(String name) {
