@@ -8,7 +8,7 @@ public class Foo {
 	}
 	
 	//설정 메서드를 통한 주입
-	public setBar(Bar bar){
+	public void setBar(Bar bar){
 		this.bar = bar;
 	}
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<!-- MessageBeanImpl 클래스가 다른 Bean을 참조하도록 정의 -->
+    <bean id="messageBean" class="com.hwi.ex02.MessageBeanImpl" >
+        <constructor-arg>
+            <value>Spring</value>
+        </constructor-arg>
+
+        <property name="greeting">
+            <value>Hello, </value>
+        </property>
+        
+        <property name="outputter">
+            <ref local="outputter" /> <!-- com.hwi.ex02.FileOutputter를 의미 --> 
+        </property>
+    </bean>
+    <!-- FileOutputter 클래스의 Bean 정의 -->
+    <bean id="outputter" class="com.hwi.ex02.FileOutputter">
+        <property name="filePath">
+            <value>out.txt</value>
+        </property>
+    </bean>
+</beans>
