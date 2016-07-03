@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+    <bean id="targetBean" class="com.hwi.ex03.MessageBeanImpl">
+        <property name="name">
+            <value>Spring</value>
+        </property>
+    </bean>
+    
+    <bean id="loggingAdvice" class="com.hwi.ex03.LoggingAdvice" />
+    
+    <bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <ref local="targetBean" />
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>advisor</value>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="advisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+        <property name="advice">
+            <ref local="loggingAdvice" />
+        </property>
+        <property name="pointcut">
+            <bean class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+                <property name="pattern">
+                    <value>.*sayHello.*</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+</beans>
