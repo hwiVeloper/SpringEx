@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 1)데이터소스 설정 DriverManagerDataSource 클래스를 이용한다-->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- JDBC 드라이버 클래스명을 설정  -->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<!-- JDBC 접속 문자열 설정 -->
+		<property name="url">
+			<value>jdbc:mysql://localhost/spring</value>
+		</property>
+		<!-- MySQL 유저 ID 설정 -->
+		<property name="username">
+			<value>hwi</value>
+		</property>
+		<!-- MySQL 패스워드 설정 -->
+		<property name="password">
+			<value>hwi</value>
+		</property>
+	</bean>
+
+	<bean id="menuUi" class="ui.MenuUi">
+		<property name="selectTeamUi" ref="selectTeamUi"></property>
+	</bean>
+
+	<bean id="teamDao" class="dao.impl.TeamDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="selectTeamUi" class="ui.SelectTeamUi">
+		<property name="teamDao" ref="teamDao"></property>
+	</bean>
+
+</beans>
