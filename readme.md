@@ -6,7 +6,7 @@ System.out.println("Welcome to Spring");
 ```
 
 
-* 모든 소스는 https://github.com/zziller03/SpringEx/tree/master/src/main/java/com/hwi 에 exXX 로 존재합니다.
+모든 소스는 https://github.com/zziller03/SpringEx/tree/master/src/main/java/com/hwi 에 exXX 로 존재합니다.
 
 ex01 - 기본 메세지 출력<br>
 ex02 - 기본 메세지 출력 및 파일 io<br>
