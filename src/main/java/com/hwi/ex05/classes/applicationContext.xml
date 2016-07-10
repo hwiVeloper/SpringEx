@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- 1)데이터소스 설정 DriverManagerDataSource 클래스를 이용한다-->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- JDBC 드라이버 클래스명을 설정  -->
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<!-- JDBC 접속 문자열 설정 -->
+		<property name="url">
+			<value>jdbc:mysql://localhost/spring</value>
+		</property>
+		<!-- MySQL 유저 ID 설정 -->
+		<property name="username">
+			<value>hwi</value>
+		</property>
+		<!-- MySQL 패스워드 설정 -->
+		<property name="password">
+			<value>hwi</value>
+		</property>
+	</bean>
+	<!-- 주 화면  -->
+	<bean id="menuUi" class="com.hwi.ex05.ui.MenuUi">
+		<property name="selectTeamUi" ref="selectTeamUi"></property>
+		<property name="insertPlayerUi" ref="insertPlayerUi"></property>
+	</bean>
+
+	<!-- DAO 관련 -->
+	<bean id="teamDao" class="com.hwi.ex05.dao.impl.TeamDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<bean id="playerDao" class="com.hwi.ex05.dao.impl.PlayerDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- User Interface(UI) 관련 -->
+	<bean id="selectTeamUi" class="com.hwi.ex05.ui.SelectTeamUi">
+		<property name="teamDao" ref="teamDao"></property>
+	</bean>
+	<bean id="insertPlayerUi" class="com.hwi.ex05.ui.InsertPlayerUi">
+		<property name="teamDao" ref="teamDao"></property>
+		<property name="playerDao" ref="playerDao"></property>
+	</bean>
+
+</beans>
