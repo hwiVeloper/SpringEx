@@ -26,15 +26,15 @@
 		</property>
 	</bean>
 
-	<bean id="menuUi" class="ui.MenuUi">
+	<bean id="menuUi" class="com.hwi.ex04.ui.MenuUi">
 		<property name="selectTeamUi" ref="selectTeamUi"></property>
 	</bean>
 
-	<bean id="teamDao" class="dao.impl.TeamDaoImpl">
+	<bean id="teamDao" class="com.hwi.ex04.dao.impl.TeamDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 
-	<bean id="selectTeamUi" class="ui.SelectTeamUi">
+	<bean id="selectTeamUi" class="com.hwi.ex04.ui.SelectTeamUi">
 		<property name="teamDao" ref="teamDao"></property>
 	</bean>
 
